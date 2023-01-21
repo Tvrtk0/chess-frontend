@@ -1,5 +1,5 @@
 import React from 'react'
-import { useIsServer } from '../../utils/hooks/useIsServer'
+import { useIsServer } from 'utils/hooks/useIsServer'
 import { ChessboardProps } from './interface'
 
 export default function Chessboard({ size = '500px', ...rest }: ChessboardProps) {
