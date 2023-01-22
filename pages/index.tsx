@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
+import { signOut, useSession } from 'next-auth/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const { data: session } = useSession()
   return (
     <>
       <Head>
@@ -13,7 +15,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex justify-center items-center h-screen">
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        <div className="container m-auto">
+          <div className="flex flex-col justify-center items-center mt-40">
+            <h1 className="text-3xl font-bold underline">Hello world!</h1>
+
+            <div className="mt-6">
+              {session && (
+                <div>
+                  <p>{session.user?.name}</p>
+                  <button onClick={() => signOut()} type="button" className="btn btn-primary">
+                    Sign out
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
       </div>
     </>
   )
