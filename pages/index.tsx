@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import { signOut, useSession } from 'next-auth/react'
-import Navbar from 'modules/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +15,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <Navbar />
         <div className="container m-auto">
           <div className="flex flex-col justify-center items-center mt-40">
             <h1 className="text-3xl font-bold underline">Hello world!</h1>
