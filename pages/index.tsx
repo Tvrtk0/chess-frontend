@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <div>
         <div className="container m-auto">
-          <div className="flex flex-col justify-center items-center mt-40">
+          <div className="mt-40 flex flex-col items-center justify-center">
             <h1 className="text-3xl font-bold underline">Hello world!</h1>
 
             <div className="mt-6">

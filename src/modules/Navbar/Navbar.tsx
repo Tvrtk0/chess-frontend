@@ -17,17 +17,17 @@ export default function Navbar() {
 
   if (isServer) return null
   return (
-    <nav className="px-4 py-2.5 md:py-0 bg-stone-800">
-      <div className="container flex flex-wrap items-center justify-between xl:justify-around mx-auto">
+    <nav className="bg-stone-800 px-4 py-2.5 md:py-0">
+      <div className="container mx-auto flex flex-wrap items-center justify-between xl:justify-around">
         <Link href="/" className="flex items-center">
-          <span className="self-center text-xl font-semibold whitespace-nowrap">Woodpecker</span>
+          <span className="self-center whitespace-nowrap text-xl font-semibold">Woodpecker</span>
         </Link>
         <button
           type="button"
           onClick={() => handleOnClick()}
-          className="inline-flex items-center p-2 ml-3 text-sm rounded-lg md:hidden focus:outline-none focus:ring-2 text-stone-400 hover:bg-stone-700 focus:ring-stone-600"
+          className="ml-3 inline-flex items-center rounded-lg p-2 text-sm text-stone-400 hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-stone-600 md:hidden"
         >
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -38,8 +38,8 @@ export default function Navbar() {
 
         <div className={`${isOpen || isMd ? 'block' : 'hidden'} ${isMd ? 'w-auto' : 'w-full'}`} id="navbar-default">
           <ul
-            className={`flex rounded-lg  bg-stone-900 md:bg-stone-800 border-stone-700 ${
-              isMd ? 'flex-row mt-0 text-sm font-medium border-0' : 'flex-col border mt-4'
+            className={`flex rounded-lg  border-stone-700 bg-stone-900 md:bg-stone-800 ${
+              isMd ? 'mt-0 flex-row border-0 text-sm font-medium' : 'mt-4 flex-col border'
             }`}
           >
             {session ? (

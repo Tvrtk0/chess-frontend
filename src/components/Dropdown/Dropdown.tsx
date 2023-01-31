@@ -24,18 +24,18 @@ export default function Dropdown({ title, children }: DropdownProps) {
     <div className="relative" ref={dropdownRef}>
       <div
         onClick={() => setIsOpen(o => !o)}
-        className={`cursor-pointer py-3 px-4 rounded md:border-0 md:py-5 md:px-3 hover:text-white ${
+        className={`cursor-pointer rounded py-3 px-4 hover:text-white md:border-0 md:py-5 md:px-3 ${
           isOpen ? 'text-white' : 'text-stone-400'
         }`}
       >
-        <div className="flex items-center h-auto select-none">
+        <div className="flex h-auto select-none items-center">
           {title}
-          <svg className="w-4 h-4 mx-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="mx-0.5 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
             <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
           </svg>
         </div>
       </div>
-      <div className={`${isOpen ? 'block' : 'hidden'} absolute left-0 z-10 w-full mt-2`}>{children}</div>
+      <div className={`${isOpen ? 'block' : 'hidden'} absolute left-0 z-10 mt-2 w-full`}>{children}</div>
     </div>
   )
 }

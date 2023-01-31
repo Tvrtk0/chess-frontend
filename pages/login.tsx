@@ -10,9 +10,9 @@ type Props = { providers: Record<LiteralUnion<BuiltInProviderType, string>, Clie
 
 export default function Login({ providers }: Props) {
   return (
-    <div className="flex flex-col items-center gap-6 mt-24 py-4">
+    <div className="mt-24 flex flex-col items-center gap-6 py-4">
       <div className="flex flex-col items-center gap-4">
-        <h1 className="text-center px-6">
+        <h1 className="px-6 text-center">
           Sign up to start your <span className="text-indigo-500">Chess Training</span>
         </h1>
         <Image src={ChessPlayersImage} alt="Honoré Daumier (1863), The Chess Players" width={600} height={465} />

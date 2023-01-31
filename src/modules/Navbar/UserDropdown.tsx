@@ -10,7 +10,7 @@ interface DropdownItemProps {
 const DropdownItem = ({ onClick, children }: DropdownItemProps) => {
   return (
     <li
-      className="block px-4 py-2 cursor-pointer text-stone-400 hover:text-white hover:bg-stone-700 select-none"
+      className="block cursor-pointer select-none px-4 py-2 text-stone-400 hover:bg-stone-700 hover:text-white"
       onClick={onClick}
     >
       {children}
@@ -22,7 +22,7 @@ export default function UserDropdown({ username }: { username: string }) {
   const ref = React.useRef()
   return (
     <Dropdown title={username}>
-      <ul className="py-2 rounded-lg bg-stone-800">
+      <ul className="rounded-lg bg-stone-800 py-2">
         <DropdownItem onClick={() => signOut()}>Sign out</DropdownItem>
       </ul>
     </Dropdown>

@@ -2,10 +2,10 @@
 
 @layer components {
   .btn {
-    @apply py-2 px-4 rounded-lg font-medium;
+    @apply rounded-lg py-2 px-4 font-medium;
   }
 
   .btn-primary {
-    @apply text-stone-200 bg-indigo-700 hover:bg-indigo-600 shadow-lg shadow-indigo-700/40 hover:shadow-indigo-600/50;
+    @apply bg-indigo-700 text-stone-200 shadow-lg shadow-indigo-700/40 hover:bg-indigo-600 hover:shadow-indigo-600/50;
   }
 }

@@ -5,7 +5,7 @@ export default function GoogleSignIn({ googleProvider }: { googleProvider?: Clie
   if (!googleProvider) return null
   return (
     <button
-      className="rounded-md pl-1 pr-3 py-1 text-neutral-600 bg-stone-200 hover:bg-stone-300"
+      className="rounded-md bg-stone-200 py-1 pl-1 pr-3 text-neutral-600 hover:bg-stone-300"
       onClick={() => signIn(googleProvider.id)}
     >
       <div className="flex items-center">
