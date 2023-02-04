@@ -15,7 +15,7 @@ export default function Navbar() {
     if (!isMd) setIsOpen(o => !o)
   }
 
-  if (isServer) return null
+  if (isServer) return <div className="h-[60px] bg-stone-800"></div>
   return (
     <nav className="bg-stone-800 px-4 py-2.5 md:py-0">
       <div className="container mx-auto flex flex-wrap items-center justify-between xl:justify-around">
@@ -47,7 +47,7 @@ export default function Navbar() {
                 <NavbarItem onClick={() => handleOnClick()} href="/">
                   Home
                 </NavbarItem>
-                <NavbarItem onClick={() => handleOnClick()} href="/chess">
+                <NavbarItem onClick={() => handleOnClick()} href="/puzzles">
                   Puzzles
                 </NavbarItem>
                 <NavbarItem onClick={() => handleOnClick()} href="/stats">
@@ -56,9 +56,14 @@ export default function Navbar() {
                 <UserDropdown username={session.user?.name || 'Profile'} />
               </>
             ) : (
-              <NavbarItem onClick={() => handleOnClick()} href="/login">
-                Sign in
-              </NavbarItem>
+              <>
+                <NavbarItem onClick={() => handleOnClick()} href="/">
+                  Home
+                </NavbarItem>
+                <NavbarItem onClick={() => handleOnClick()} href="/login">
+                  Sign in
+                </NavbarItem>
+              </>
             )}
           </ul>
         </div>

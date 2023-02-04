@@ -10,14 +10,14 @@ type Props = { providers: Record<LiteralUnion<BuiltInProviderType, string>, Clie
 
 export default function Login({ providers }: Props) {
   return (
-    <div className="mt-24 flex flex-col items-center gap-6 py-4">
-      <div className="flex flex-col items-center gap-4">
-        <h1 className="px-6 text-center">
-          Sign up to start your <span className="text-indigo-500">Chess Training</span>
+    <div className="mt-14 flex flex-col items-center gap-8 py-4">
+      <Image src={ChessPlayersImage} alt="Honoré Daumier (1863), The Chess Players" width={600} height={465} />
+      <div className="flex flex-col items-center gap-6">
+        <h1 className="px-6 text-center text-stone-400">
+          Sign up to start your <span className="text-stone-300">Chess Training</span>
         </h1>
-        <Image src={ChessPlayersImage} alt="Honoré Daumier (1863), The Chess Players" width={600} height={465} />
+        <GoogleSignIn googleProvider={providers?.google} />
       </div>
-      <GoogleSignIn googleProvider={providers?.google} />
     </div>
   )
 }
@@ -27,7 +27,7 @@ export async function getServerSideProps(context: NextPageContext) {
   if (session?.user) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/stats',
         permanent: false,
       },
     }
