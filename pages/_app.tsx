@@ -12,7 +12,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
       <SWRConfig value={swrConfig}>
         <Layout>
           <AuthGuard>
-          <Component {...pageProps} />
+            <Component {...pageProps} />
           </AuthGuard>
         </Layout>
       </SWRConfig>
