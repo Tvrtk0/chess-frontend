@@ -6,6 +6,22 @@
   }
 
   .btn-primary {
-    @apply bg-indigo-700 text-stone-200 shadow-lg shadow-indigo-700/40 hover:bg-indigo-600 hover:shadow-indigo-600/50;
+    @apply bg-stone-700 text-stone-200 shadow-lg shadow-stone-700/20 hover:bg-stone-600 hover:shadow-stone-600/30;
+  }
+
+  .btn-disabled {
+    @apply bg-stone-700 text-stone-400 shadow-lg shadow-stone-700/20;
+  }
+
+  .tab {
+    @apply rounded-lg  py-1.5 px-3 text-sm;
+  }
+
+  .tab-default {
+    @apply bg-stone-700 text-stone-200 transition-colors duration-200 hover:bg-stone-600 hover:text-stone-100;
+  }
+
+  .tab-active {
+    @apply bg-stone-300 text-stone-900 transition-colors duration-200 hover:bg-stone-200;
   }
 }
