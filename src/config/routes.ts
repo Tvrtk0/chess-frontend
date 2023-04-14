@@ -4,6 +4,7 @@ export const routesMap = {
   public: ['/', '/login'],
 }
 
+export const puzzles = () => '/puzzles'
 export const puzzleSet = (id: string) => '/puzzles/set/' + id
 
 export const puzzleAPI = (puzzleId: string) => API_BASENAME + '/puzzle/' + puzzleId
