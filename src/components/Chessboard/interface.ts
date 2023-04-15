@@ -20,6 +20,7 @@ export interface ChessHistory {
   piece: string
   san: string
   to: string
+  promotion?: string
 }
 
 export interface OnMoveBoard {
