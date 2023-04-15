@@ -9,12 +9,14 @@ import { useMediaQuery } from 'utils/hooks/useMediaQuery'
 import { makeMove } from 'components/Chessboard/utils'
 import { PuzzleStatus } from './PuzzleStatus'
 import { MoveHistory } from './MoveHistory'
+import { useRouter } from 'next/router'
+import { puzzles } from 'config/routes'
 
 type Props = { setId: string; puzzleId: string; mutateSet: KeyedMutator<I.Set> }
 
 const getSolutionMoves = (i: number, solution?: string[]) => {
   if (!solution || !solution[i]) return null
-  return { from: solution[i].slice(0, 2), to: solution[i].slice(2, 4) }
+  return { from: solution[i].slice(0, 2), to: solution[i].slice(2) }
 }
 
 const updatePuzzle = (setId: string, puzzleId: string, isSolved: boolean) => {
@@ -36,6 +38,7 @@ const updatePuzzle = (setId: string, puzzleId: string, isSolved: boolean) => {
 
 export default function PuzzleBoard({ setId, puzzleId, mutateSet }: Props) {
   const { data: puzzle } = useSWR<I.Puzzle>(routes.puzzleAPI(puzzleId || ''))
+  const router = useRouter()
   const boardRef = useRef<ChessBoardRef>()
   const isSm = useMediaQuery('sm')
 
@@ -61,17 +64,15 @@ export default function PuzzleBoard({ setId, puzzleId, mutateSet }: Props) {
   }, [solution])
 
   const handleShowSolution = () => {
-    setShowSolution(true)
+    setShowSolution(s => (s = !s))
     // if (fen === puzzle?.fen) {
     //   setFen(undefined)
     // } else setFen(puzzle?.fen)
   }
 
-  const handleNextPuzzle = () => {
-    setIsWrong(false)
-    setIsSolved(false)
-    setShowSolution(false)
+  const handleNextPuzzle = (setId: string) => {
     mutateSet()
+    router.reload()
   }
 
   const onMove = async (chess: OnMoveBoard) => {
@@ -79,13 +80,16 @@ export default function PuzzleBoard({ setId, puzzleId, mutateSet }: Props) {
     if (isDisabled) {
       let isPuzzleDone = false
       const chessHistory = chess.history({ verbose: true })
-      const historyFromTo = chessHistory.map(h => `${h.from}${h.to}`)
       const historySAN = chessHistory.map(h => h.san)
+      const historyUCI = chessHistory.map(h => {
+        const promotion = h.promotion ? h.promotion : ''
+        return `${h.from}${h.to}${promotion}`
+      })
 
       setTurn(chess.turn())
       setMoveList(historySAN)
 
-      historyFromTo.forEach((move, i) => {
+      historyUCI.forEach((move, i) => {
         if (solution && move !== solution[i]) {
           setIsWrong(true)
           isPuzzleDone = true
@@ -93,7 +97,7 @@ export default function PuzzleBoard({ setId, puzzleId, mutateSet }: Props) {
         }
       })
 
-      if (historyFromTo.toString() === solution?.toString()) {
+      if (historyUCI.toString() === solution?.toString()) {
         setIsSolved(true)
         isPuzzleDone = true
         updatePuzzle(setId, puzzleId, true)
@@ -134,6 +138,10 @@ export default function PuzzleBoard({ setId, puzzleId, mutateSet }: Props) {
       )}
 
       <div className="mb-5 flex gap-2">
+        <button className="btn btn-primary" onClick={() => router.push(puzzles())}>
+          Go back
+        </button>
+
         <button
           className={`btn ${isDisabled ? 'btn-disabled' : 'btn-primary'}`}
           disabled={isDisabled}
@@ -145,7 +153,7 @@ export default function PuzzleBoard({ setId, puzzleId, mutateSet }: Props) {
         <button
           className={`btn ${isDisabled ? 'btn-disabled' : 'btn-primary'}`}
           disabled={isDisabled}
-          onClick={handleNextPuzzle}
+          onClick={() => handleNextPuzzle(setId)}
         >
           Next Puzzle
         </button>
