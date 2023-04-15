@@ -18,10 +18,12 @@ export default function PuzzleSets() {
   const [activeTab, setActiveTab] = useState<PuzzleSetTabs>(PuzzleSetTabs.CreatedAt)
   const { data: session } = useSession()
   const email = session?.user?.email ?? ''
-  const { data: sets } = useSWR<Set[]>(routes.puzzleSetsAPI(email))
+  const { data: sets, mutate: mutateSets } = useSWR<Set[]>(routes.puzzleSetsAPI(email))
+
+  sets?.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
 
   return (
-    <section className="mt-5 px-3">
+    <section className="mt-5 px-3 lg:px-40">
       {/* TODO popup to choose set size and avg. rating for new set */}
       <div className="mb-7 flex w-full flex-wrap items-end gap-1 md:flex-nowrap">
         <div className="mb-1.5 mr-5 w-56">
@@ -55,7 +57,8 @@ export default function PuzzleSets() {
       </div>
 
       <div className={`flex flex-wrap gap-3 sm:justify-start ${isSm ? 'justify-start' : 'justify-center'}`}>
-        {sets?.length && sets.map((set, i) => <PuzzleSetItem key={`${i}-${set._id}`} set={set} />)}
+        {sets?.length &&
+          sets.map((set, i) => <PuzzleSetItem key={`${i}-${set._id}`} set={set} mutateSets={mutateSets} />)}
       </div>
     </section>
   )
