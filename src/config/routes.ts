@@ -11,3 +11,5 @@ export const puzzleAPI = (puzzleId: string) => API_BASENAME + '/puzzle/' + puzzl
 export const puzzleSetAPI = (setId: string) => API_BASENAME + '/sets/' + setId
 export const puzzleSetUpdateAPI = (setId: string, puzzleId: string) => API_BASENAME + '/sets/' + setId + '/' + puzzleId
 export const puzzleSetsAPI = (email: string) => API_BASENAME + '/sets/all/' + email
+export const puzzleSetResetAPI = (setId: string) => API_BASENAME + '/sets/reset/' + setId
+export const deletePuzzleSetAPI = (email: string, setId: string) => API_BASENAME + `/sets/${email}/${setId}`
