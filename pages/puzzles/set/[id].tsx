@@ -22,7 +22,14 @@ export default function Set() {
   if (!set) return null
   return (
     <div className="container mx-auto mt-10">
-      {activePuzzleId && <PuzzleBoard setId={set._id} puzzleId={activePuzzleId.puzzleId} mutateSet={mutate} />}
+      {activePuzzleId && (
+        <PuzzleBoard
+          key={activePuzzleId.puzzleId}
+          setId={set._id}
+          puzzleId={activePuzzleId.puzzleId}
+          mutateSet={mutate}
+        />
+      )}
       {set?.setPuzzles.find(p => p.played === false) === undefined && <FinishedSet set={set} mutateSet={mutate} />}
     </div>
   )

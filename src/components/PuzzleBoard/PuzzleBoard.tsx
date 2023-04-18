@@ -70,9 +70,8 @@ export default function PuzzleBoard({ setId, puzzleId, mutateSet }: Props) {
     // } else setFen(puzzle?.fen)
   }
 
-  const handleNextPuzzle = (setId: string) => {
+  const handleNextPuzzle = () => {
     mutateSet()
-    router.reload()
   }
 
   const onMove = async (chess: OnMoveBoard) => {
@@ -153,7 +152,7 @@ export default function PuzzleBoard({ setId, puzzleId, mutateSet }: Props) {
         <button
           className={`btn ${isDisabled ? 'btn-disabled' : 'btn-primary'}`}
           disabled={isDisabled}
-          onClick={() => handleNextPuzzle(setId)}
+          onClick={() => handleNextPuzzle()}
         >
           Next Puzzle
         </button>
