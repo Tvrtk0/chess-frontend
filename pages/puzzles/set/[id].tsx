@@ -1,4 +1,4 @@
-import PuzzleBoard from 'components/PuzzleBoard'
+import PuzzleBoard from 'modules/PuzzleBoard'
 import { routes } from 'config'
 import * as I from 'model'
 import FinishedSet from 'modules/FinishedSet'
