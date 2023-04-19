@@ -7,19 +7,15 @@ import { deleteSet } from 'modules/PuzzleSets/utils'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { KeyedMutator } from 'swr'
+import { getPuzzleStats } from 'utils/Stats'
 
 export default function FinishedSet({ set, mutateSet }: { set: Set; mutateSet: KeyedMutator<Set> }) {
   const { data: session } = useSession()
   const email = session?.user?.email ?? ''
   const router = useRouter()
+
   const dateCreated = new Date(set.createdAt).toLocaleDateString()
-  const correctPuzzles = set.setPuzzles.filter(p => p.solved === true).length
-  const setSize = set.setPuzzles.length
-  const pct = Math.round((correctPuzzles / setSize) * 100)
-  const ratingSum = set.setPuzzles.reduce((total, current) => total + current.rating, 0)
-  const ratingAvg = Math.round(ratingSum / set.setPuzzles.length)
-  const dp = (800 * pct) / 100 - 400
-  const ratingPerformance = dp + ratingAvg
+  const { correctPuzzles, setSize, solvedPct, ratingAvg, ratingPerformance } = getPuzzleStats(set.setPuzzles)
 
   const resetSet = () => {
     if (window.confirm('Do you really want to reset this set?')) {
@@ -37,7 +33,7 @@ export default function FinishedSet({ set, mutateSet }: { set: Set; mutateSet: K
     <section className="mb-10 px-3">
       <div className="mb-10 text-center">
         <h2>
-          Set completed: {pct}%{' '}
+          Set completed: {solvedPct}%{' '}
           <span className="text-stone-400">
             ({correctPuzzles}/{setSize})
           </span>
