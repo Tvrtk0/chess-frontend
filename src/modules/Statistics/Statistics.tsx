@@ -33,7 +33,7 @@ export default function Statistics() {
       <div className="mb-14 mt-10 text-center">
         <h2>Puzzles Statistics</h2>
       </div>
-      <section className="mb-10 flex flex-col items-center">
+      <section className="mb-10 flex flex-col items-center px-5">
         <StatsRow name="Solved">
           {correctPuzzles} / {setSize}
         </StatsRow>
@@ -57,8 +57,3 @@ export default function Statistics() {
     </div>
   )
 }
-
-// const sumWithInitial = array1.reduce(
-//     (accumulator, currentValue) => accumulator + currentValue,
-//     initialValue
-//   );

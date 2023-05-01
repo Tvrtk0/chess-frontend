@@ -4,7 +4,7 @@ import { NextPageContext } from 'next'
 import { BuiltInProviderType } from 'next-auth/providers'
 import Image from 'next/image'
 import ChessPlayersImage from '@/public/assets/img/chess-players.jpg'
-import GoogleSignIn from 'components/GoogleSignIn/GoogleSignIn'
+import GoogleSignIn from 'components/GoogleSignIn'
 
 type Props = { providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null }
 
@@ -27,7 +27,7 @@ export async function getServerSideProps(context: NextPageContext) {
   if (session?.user) {
     return {
       redirect: {
-        destination: '/stats',
+        destination: '/puzzles',
         permanent: false,
       },
     }

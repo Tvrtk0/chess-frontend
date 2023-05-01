@@ -20,13 +20,13 @@ export default function Themes({ setPuzzles }: { setPuzzles: SetPuzzle[] }) {
               <div className="flex justify-center">
                 <div className="w-full max-w-md">
                   <div className="flex justify-between px-1 text-sm">
-                    <div className="mb-1 font-bold text-stone-50">{formattedTheme(theme.name)}</div>
-                    <div className="text-stone-200">
-                      {solvedPct}%
+                    <div className="mb-1 font-bold text-stone-50">
+                      {formattedTheme(theme.name)}
                       <span className="ml-2 text-stone-400">
                         ({theme.puzzles.solved}/{puzzlesPlayed})
                       </span>
                     </div>
+                    <div className="text-stone-200">{solvedPct}%</div>
                   </div>
                   <div className="mb-2 w-full">
                     <ProgressBar solvedPct={solvedPct} />
