@@ -1,1 +1,1 @@
-export { default } from './PuzzleSets'
+export { default } from './PuzzleSetsWrapper'

@@ -24,7 +24,7 @@ export default function PuzzleSetItem({ set, mutateSets }: { set: Set; mutateSet
               {puzzlesDone}/{puzzlesTotal}
             </div>
             <RatingColor rating={rating} size="lg" />
-            <div className="mt-1">{rating}</div>
+            <div className="mt-1 text-lg">{rating}</div>
             <div className="text-xs text-stone-400">{date}</div>
           </div>
         </div>
