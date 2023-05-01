@@ -6,6 +6,9 @@ export const routesMap = {
 
 export const puzzles = () => '/puzzles'
 export const puzzleSet = (id: string) => '/puzzles/set/' + id
+export const createSet = () => '/puzzles/create'
+export const stats = () => '/stats'
+export const calculator = () => '/calculator'
 
 export const puzzleAPI = (puzzleId: string) => API_BASENAME + '/puzzle/' + puzzleId
 export const puzzleSetAPI = (setId: string) => API_BASENAME + '/sets/' + setId
@@ -13,3 +16,4 @@ export const puzzleSetUpdateAPI = (setId: string, puzzleId: string) => API_BASEN
 export const puzzleSetsAPI = (email: string) => API_BASENAME + '/sets/all/' + email
 export const puzzleSetResetAPI = (setId: string) => API_BASENAME + '/sets/reset/' + setId
 export const deletePuzzleSetAPI = (email: string, setId: string) => API_BASENAME + `/sets/${email}/${setId}`
+export const crateSetAPI = () => API_BASENAME + '/sets'
