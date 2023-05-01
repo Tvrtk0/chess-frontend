@@ -53,6 +53,9 @@ export default function Navbar() {
                 <NavbarItem onClick={() => handleOnClick()} href="/stats">
                   Statistics
                 </NavbarItem>
+                <NavbarItem onClick={() => handleOnClick()} href="/calculator">
+                  Calculator
+                </NavbarItem>
                 <UserDropdown username={session.user?.name || 'Profile'} />
               </>
             ) : (
