@@ -23,7 +23,10 @@ export default function Statistics() {
 
   if (!sets) return null
 
-  const allPuzzlesSet = sets.reduce((arr, set) => arr.concat(set.setPuzzles), new Array<I.SetPuzzle>())
+  const allPuzzlesSet = sets.reduce(
+    (arr, set) => arr.concat(set.setPuzzles.filter(p => p.played === true)),
+    new Array<I.SetPuzzle>()
+  )
   console.log(allPuzzlesSet)
 
   const { correctPuzzles, setSize, solvedPct, ratingAvg, ratingPerformance } = getPuzzleStats(allPuzzlesSet)
