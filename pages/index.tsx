@@ -2,11 +2,8 @@ import Head from 'next/head'
 import HansTikkanenImage from '@/public/assets/img/HansTikkanen.jpg'
 import AxelSmith from '@/public/assets/img/AxelSmith.jpg'
 import Image from 'next/image'
-import { useMediaQuery } from 'utils/hooks/useMediaQuery'
 
 export default function Home() {
-  const isLg = useMediaQuery('lg')
-
   return (
     <>
       <Head>
@@ -17,9 +14,7 @@ export default function Home() {
       </Head>
       <div>
         <h1 className="my-7 text-center lg:text-4xl">The Woodpecker Method</h1>
-        <section
-          className={`${isLg ? 'flex-row' : 'flex-col-reverse'} mt-10 flex items-center justify-center gap-x-32 px-5`}
-        >
+        <section className="mt-10 flex flex-col-reverse items-center justify-center gap-x-32 px-5 lg:flex-row">
           <div className="flex max-w-lg flex-col justify-center p-3">
             <div className="flex flex-col gap-y-3 text-lg leading-8">
               <h2>Ultimate Method for Improvers</h2>
@@ -38,11 +33,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          className={`${
-            isLg ? 'flex-row' : 'flex-col'
-          } mt-12 flex items-center justify-center gap-x-32 bg-stone-800 py-14 px-5`}
-        >
+        <section className="mt-12 flex flex-col items-center justify-center gap-x-32 bg-stone-800 py-14 px-5 lg:flex-row">
           <div className="my-5 flex max-w-sm flex-col items-center">
             <Image src={HansTikkanenImage} alt="Hans Tikkanen" width={420} height={420} />
             <p className="mt-2 italic text-stone-400">GM Hans Tikkanen</p>
